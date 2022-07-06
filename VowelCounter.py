@@ -4,7 +4,7 @@
 VowelCounter
 Created by Braden Piper, bradenpiper.com
 Created on Wed Jun 29, 2022
-version = 1.0
+version = 1.1
 ------------------------------------------
 VowelCounter is a simple, friendly program that will count the number of vowels
 in any text string you provide it with. The program asks the user to input some
@@ -17,7 +17,7 @@ text, and it will return the vowel count within that text.
 def vowelCounter(string):
     '''
     Accepts a string. The string should be lowercase.
-    Returns an int, the number of vowels in the string.
+    Prints an int, the number of vowels in the string.
     '''
     vowels = ['a', 'e', 'i', 'o', 'u']
     numVowels = 0
@@ -44,25 +44,24 @@ def replayQuery():
             return False
         else:
             print("I did not understand your answer, please type 'y' or 'n' to answer.")
-  
+    
+    
 # PROGAM          
-  
-runProgram = True  
-firstTime = True
 
-while runProgram == True:    
-    if firstTime == True:
-        print("Hello, I am VowelCounter. I will tell you how many vowels are in the text string you input.")
-        print('Please input your text below, then press enter:')
-        firstTime = False
-    else:
-        print('Please input your text below, then press enter:')
-    vowelCounter(input().lower())
-    if replayQuery() == True:
-        continue
-    else:
-        runProgram = False
-        
+runProgram = True  
+
+# Intro
+print("Hello, I am VowelCounter. I will tell you how many vowels are in the text string you input.")
+
+while runProgram == True:  
+    # accept input, lowercase it, feed it to vowelCounter func, prints # of vowels
+    vowelCounter(input('Please input your text, then press enter: ').lower())
+    
+    # Ask user if they want to run the program again
+    if replayQuery() == False:     # run replayQuery func, returns a bool
+        runProgram = False         # if False, end program
+      
+# Outro
 print('If you ever need someone to count your vowels, I am here.')
 print('That is why they call me VowelCounter.')
 print('Thank you. Goodbye.')
